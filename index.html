@@ -73,7 +73,8 @@
 
                 if (diferencia <= 0) {
                     clearInterval(intervalo);
-                    console.log("Redirigiendo a Agua_en_movimiento.html");
+                    window.location.href = "Agua_en_movimiento.html";
+
 
                     return;
                 }
@@ -87,7 +88,7 @@
             }, 1000);
         }
         
-        document.addEventListener("DOMContentLoaded", actualizarCuentaRegresiva);
+
 
         document.addEventListener("DOMContentLoaded", function() {
     actualizarCuentaRegresiva();
