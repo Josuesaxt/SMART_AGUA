@@ -66,14 +66,16 @@
 
     <script>
         function actualizarCuentaRegresiva() {
-            const fechaObjetivo = new Date("2025-03-21T00:00:00").getTime();
+            const fechaObjetivo = new Date(Date.UTC(2025, 2, 21, 0, 0, 0)).getTime(); // Marzo es 2 porque los meses en JS van de 0 a 11
+
             const intervalo = setInterval(() => {
                 const ahora = new Date().getTime();
                 const diferencia = fechaObjetivo - ahora;
 
                 if (diferencia <= 0) {
                     clearInterval(intervalo);
-                    window.location.href = "Agua_en_movimiento.html";
+                    console.log("Redirigiendo a Agua_en_movimiento.html");
+
                     return;
                 }
 
@@ -87,6 +89,11 @@
         }
         
         document.addEventListener("DOMContentLoaded", actualizarCuentaRegresiva);
+
+        document.addEventListener("DOMContentLoaded", function() {
+    actualizarCuentaRegresiva();
+});
+
     </script>
 </body>
 </html>
