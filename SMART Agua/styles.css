@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+    --color-primario: #007aff;
+    --color-secundario: #f2f2f7;
+    --color-texto: #1c1c1e;
+    --color-fondo: #ffffff;
+    --color-hover: #005bb5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 5px;
+    background: linear-gradient(to right, #2175C6, #3d2475), url('Img/header.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border-radius: 0 0 20px 20px;
+}
+
+header img {
+    width: 100%; /* Hacemos que la imagen sea responsive */
+    height: auto;
+}
+
+section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--color-primario);
+}
+
+.modulos-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modulo {
+    background: #f2f2f7;
+    padding: 20px;
+    color: #1c1c1e;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.modulo:hover {
+    transform: translateY(-5px);
+    background: #a9a9a9;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: var(--color-secundario);
+    margin-top: 20px;
+}
+
+footer img {
+    width: 100%; /* Hacemos que el logo del footer sea responsive */
+    height: auto;
+}
+
+/* Media Queries para Responsividad */
+
+@media (max-width: 1024px) {
+    /* Ajustar el tamaño de los módulos en tabletas */
+    .modulos-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tabletas */
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .modulo {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ajustar el tamaño de los módulos en móviles */
+    .modulos-container {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .modulo {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 15px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Asegurar que el texto en el footer y header se vea bien */
+    footer p, header h1 {
+        font-size: 1rem;
+    }
+
+
+}
+
+
+/* Menú lateral */
+.lateral-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: var(--color-primario);
+    padding-top: 20px;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.lateral-menu.active {
+    left: 0;
+}
+
+.lateral-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.lateral-menu ul li {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.lateral-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: block;
+    transition: background-color 0.3s ease-in-out;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.lateral-menu ul li a:hover {
+    background-color: var(--color-hover);
+}
+
+/* Botón de menú */
+.menu-toggle {
+    font-size: 30px;
+    color: var(--color-texto);
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    cursor: pointer;
+   /* background: white;*/
+    padding: 1px 15px;
+    border-radius: 1px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenido principal */
+.main-content {
+    margin-left: 0;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Ajuste cuando el menú está abierto */
+.lateral-menu.active + .main-content {
+    margin-left: 250px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        left: 10px;
+        top: 10px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+}

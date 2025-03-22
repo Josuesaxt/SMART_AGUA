@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agua en Movimiento</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+
+
+            body {
+    background: linear-gradient(to right, #3B1688, #2175C6); /* Se agrega una coma entre los colores */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Esto asegura que el gradiente cubra toda la pantalla */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+
+
+        #cuenta-regresiva-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ffffff;
+        }
+
+        h1 {
+            font-size: 100px;
+            text-transform: uppercase;
+            font-weight: 900;
+            color: #a7abaf82;
+            -webkit-background-clip: text;
+            animation: water 15s infinite;
+        }
+
+        #texto-arriba, #texto-abajo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+  
+    </style>
+</head>
+<body>
+    <div id="cuenta-regresiva-container">
+        <p id="texto-arriba">¡Falta poco para el evento!</p>
+        <h1 id="cuenta-regresiva"></h1>
+        <p id="texto-abajo">¡Nos vemos pronto!</p>
+    </div>
+
+    <div id="lluvia"></div>
+
+    <script>
+        function actualizarCuentaRegresiva() {
+            const fechaObjetivo = new Date("2025-03-27T00:00:00").getTime(); // Ajusta la fecha aquí
+            const intervalo = setInterval(() => {
+                const ahora = new Date().getTime();
+                const diferencia = fechaObjetivo - ahora;
+
+                if (diferencia <= 0) {
+                    clearInterval(intervalo);
+                    window.location.href = "Agua_en_movimiento.html"; // Redirige a la página principal
+                    return;
+                }
+
+                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+                
+                document.getElementById("cuenta-regresiva").textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+            }, 1000);
+        }
+        
+        document.addEventListener("DOMContentLoaded", actualizarCuentaRegresiva);
+    </script>
+</body>
+</html>
